@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "meeting-room-145708",
+  "private_key_id": "48722d41aa16c22e850e766e69e2884265d0d3a6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDNVug57Sjm5ubM\ntHspvk/bkV7ndhDVFd9WKNHWwMYPzYvE3cM4NojEllWxsCnFGKbL3il8cdW8fa/Y\nZjTI8GixuOYuUsSqoCiPkIkwVCHHYUFhiC5vZhf9hVLNhM+420urNK/HFj0WN3vC\nijCCdp5ipzbSuIL1mZgohzO/RaTlxdwrR8+WWWzfQLxCz0jxQD1/6VXS2OFfdzWL\n0zID3wcLY25t7hQuSfJXlVJNnBLeqEoelLGUMsMW8aXuqQpmFQrugCbdomqBc/qe\nBXTp7GgwO6m3miCXPlDiE2WNFYhF19xOFhpPVEUcFXGyerqUVEBXDYNGsOR38Hw1\ndU/bC9IbAgMBAAECggEAbTnWa8HAqRqYGLnEbg8C0awBTKQcDg0FcQJjpJWEhbFz\nsLO5/XPcyp2hVdR8U5BqYTV64ex3oj1FRZoQZ/ah6i+NmYSDgrOQ/9UFdMS79x+/\ntI7JDI7FIiFCS3pjOFTGanqrKf6lXeUDmxcA+NT6KUYDPpHRb61VJ/HLT+pO7b2f\nA6Ike22/ONdVBhvvrcCN0ZRifmbm78kDVlBlrTxfAxsS/kZCV/ysBSNVsYREpsLu\nYtX/XkDQ0NjrcuvqTb2pPU6S8GnbaNa73feoZ0P8krScIsjNN+wNoErDScwijQQs\nUVQ4szr7bSxZHrq04HN1hKFJZ/5dGVsuHbf2QTi88QKBgQDq3OQcVbkUO3SiSugD\n2wtlTXznjOO+sqPbzcNtpSrDxx2Ek6LsU00J8AJfTtHTcssKFJlUX9pU5Gwe21v1\nA33XBFzGLLSud+dh4PdowDgZuJB/+l0dooUvWCdDRuN/GS3uI5vxdRIbJvgV0tlR\n65ZL8CVMtd6JI7LzdmoJHtJ5mQKBgQDf0dBjxwZEv9wgNuNyC656K6L/2BMaATlm\nzdR2INAuRK0loDZegssAbwop++8Ho+mbrBm0qcIs9esE75oXtyw5O0M9NwsnV47A\nG+JjUqfnlKT+5ufQFSKZ2A3I3vVH6nFNc2psH2J6Q6lwvFi0R+TlsUDr+Akb3Jdr\n/1XbSNgB0wKBgACF8XQmtLzYzQ+3fwDTMhlNrOOPKsq39yl8Md1Cqu+4t9YdxhUk\nsl09TaQMtubzsIQbO6Q2enQJ9juzXWcUVOlvtw0x+E0TM07Cg4qWMwnLoXbHhgGU\n5RsP5TZ/J+6WjcWkCqrlCd9JnO/fgmBuV+1fYZXkKdTAYZutPds7WFixAoGBAKAm\nk4QxrwyWdD4gyFKchTYp7zI+PDzJT3d+JF56UDwrK/HWV9D8qaEf0xgDix/ea5PW\na3ZYWfat6ILZp1r82IoDG7O7pSF7h0tzKGSFilssg3tZYdoEpYOLkyF+V+gjmvse\ncLH5Kw/tRlrCin5FS0YHtTqjenETQM4oIBkOYHG9AoGAJVC0my4X52zyuha0/k++\n7l4L8o85lTuVgrkBOdAZ8RF7h8t+s8SxfVM1rneFAspV2yfsaFQjUScdfZ2LGi1Y\np0v7+ZgiNmC81DBGFRrdnDCAaTigt/7i2XkzujhoICGnk1LQyXa/SXra6sFfIWan\n6JbHr/viB4+eP1WxCrOUFDA=\n-----END PRIVATE KEY-----\n",
+  "client_email": "meeting-room-145708@appspot.gserviceaccount.com",
+  "client_id": "103148900960293931085",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/meeting-room-145708%40appspot.gserviceaccount.com"
+}
