@@ -18,7 +18,7 @@
     <!--<div class="flex-center position-ref full-height">-->
         <div class="content">
                 <div class="title m-b-md">
-                    METTRR
+                    <b>METTRR</b>
                 </div>
                 <h2>MEETING ROOM</h2>
                 <h4>Login</h4>
