@@ -17,7 +17,7 @@
         </ul>
 </div>
 <div class="container">
-    <h1>METTRR</h1>
+    <h1>Mettrr</h1>
 
     <h4>Meeting Room Booking Form</h4>
         
@@ -42,6 +42,24 @@
                 <input class="field" name="date" type="date" class="form-control">
             </div>
             </p>
+            
+            <label for="start-time" class="control-label">Start Time</label>
+            <p>
+            <div class="form-group">
+                <input class="field" name="start-time" type="time" value="00:00" class="form-control" step="1800">
+            </div>
+            </p>
+            
+            <label for="end-time" class="control-label">End Time</label>
+            <p>
+            <div class="form-group">
+                <input class="field" name="end-time" type="time" value="00:00" class="form-control" step="1800">
+            </div>
+            </p>
+            
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary ">Add Meeting</button>
+            </div>
         
         </form>
         
