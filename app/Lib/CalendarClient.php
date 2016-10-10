@@ -11,7 +11,6 @@ class CalendarClient
     $client = new Google_Client();
     $client->setScopes(Google_Service_Calendar::CALENDAR);
     $client->setAuthConfig($credentialJson);
-    
   }
   
   public function postData($date, $startTime, $endTime)
