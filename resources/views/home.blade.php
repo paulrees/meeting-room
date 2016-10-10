@@ -17,8 +17,8 @@
         </ul>
 </div>
 <div class="container">
+    <div class="col-md-4">
     <h1>Mettrr</h1>
-
     <h4>Meeting Room Booking Form</h4>
         
         <h4></h4>
@@ -75,13 +75,16 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-primary ">Add Meeting</button>
             </div>
-            
-            
+        
          </form>
          
-<iframe src="https://calendar.google.com/calendar/embed?showPrint=0&amp;showTz=0&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=hello%40mettrr.com&amp;color=%231B887A&amp;ctz=Europe%2FLondon" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-        <!--<example></example>-->
-        
+            @include('flash')
+            
+    </div>
+    
+    <div class="col-md-8">
+        <iframe src="https://calendar.google.com/calendar/embed?showPrint=0&amp;showTz=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=hello%40mettrr.com&amp;color=%231B887A&amp;ctz=Europe%2FLondon" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>
         
         
         

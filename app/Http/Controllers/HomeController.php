@@ -40,7 +40,11 @@ class HomeController extends Controller
         
         $results = $calender->postData($title, $date, $startTime, $endTime, $priority, $email);
         
-        return back();
+        $flashMessage = strtoupper($title) . ' is booked on ' . $date . ' from ' . $startTime . ' to ' . $endTime . '.';
+        
+        flash($flashMessage);
+        
+        return redirect('/home');
         
     }
 }
