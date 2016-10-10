@@ -22,6 +22,35 @@
     <h4>Meeting Room Booking Form</h4>
         
         <h4></h4>
+        
+        <form method="POST" action="/post"> 
+        
+            {{ csrf_field() }}
+            
+            
+            <label for="name" class="control-label">Name</label>
+            
+            <p>
+            <div class="form-group">
+                <input class="field" name="name" type="text" class="form-control" value="{{ Auth::user()->name }}">
+            </div>
+            </p>
+            
+            <label for="Date" class="control-label">Date</label>
+            <p>
+            <div class="form-group">
+                <input class="field" name="date" type="date" class="form-control">
+            </div>
+            </p>
+        
+        </form>
+        
+        
+        
+        
+        
+        
+        
                 
 </div>
 @endsection

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Lib\CalendarScript;
+use Carbon\Carbon;
+
 
 class HomeController extends Controller
 {
@@ -23,6 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $input = new CalendarScript("TESTER");
+        
         return view('home');
+    }
+    
+    public function store(Request $request)
+    {
+        
     }
 }
