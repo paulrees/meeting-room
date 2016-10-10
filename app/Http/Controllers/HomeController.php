@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use App\Lib\CalendarClient;
 use Illuminate\Http\Request;
 
@@ -30,21 +29,14 @@ class HomeController extends Controller
     
     public function store(CalendarClient $calender, Request $request)
     {
-        $name = $request->name;
-        $title = $request->title;
-        $date = $request->input_date;
-        $startTime = $request->start_time;
-        $endTime = $request->end_time;
-        $priority = $request->priority;
-        $email = Auth::user()->email;
+        $calender->postData($request);
         
-        $results = $calender->postData($title, $date, $startTime, $endTime, $priority, $email);
-        
-        $flashMessage = strtoupper($title) . ' is booked on ' . $date . ' from ' . $startTime . ' to ' . $endTime . '.';
+        $flashMessage = strtoupper($request->title) . ' is booked on ' . 
+                        $request->input_date . ' from ' . 
+                        $request->start_time . ' to ' . $request->end_time . '.';
         
         flash($flashMessage);
         
         return redirect('/home');
-        
     }
 }
