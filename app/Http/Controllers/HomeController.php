@@ -2,15 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Auth;
 use App\Lib\CalendarClient;
-use Carbon\Carbon;
-
-// $client = new Google_Client();
-// $client->setScopes(Google_Service_Calendar::CALENDAR);
-// $client->setAuthConfig($cred);
-// $service = new Google_Service_Calendar($client);
-// $calendarId = 'hello@mettrr.com';
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -34,55 +28,19 @@ class HomeController extends Controller
         return view('home');
     }
     
-    public function store(Request $request)
+    public function store(CalendarClient $calender, Request $request)
     {
         $name = $request->name;
+        $title = $request->title;
         $date = $request->input_date;
         $startTime = $request->start_time;
         $endTime = $request->end_time;
+        $priority = $request->priority;
+        $email = Auth::user()->email;
         
-        
-        $client = new CalendarClient();
-        
-        $client.postData($date, $startTime, $endTime);
+        $results = $calender->postData($title, $date, $startTime, $endTime, $priority, $email);
         
         return back();
         
-//         $event = new Google_Service_Calendar_Event(array(
-// 	'summary' => 'ASDADADAD',
-//   	'location' => 'Mettrr, 5-8 Crown Works, Temple Street, E2 6QQ',
-//   	'start' => array(
-//     	'dateTime' => '',
-//     	'timeZone' => 'Europe/London',
-//   	),
-//   	'end' => array(
-//     	'dateTime' => '2016-10-08T11:00:00.000-05:00',
-//     	'timeZone' => 'America/Los_Angeles',
-//   	),
-//   	'attendees' => array(
-//     	array(
-//     		'email' => 'mail@gmail.com',
-//     		'organizer' => true
-//     		),
-//     	array(
-//     		'email' => 'tobias@gmail.com',
-//     		'resource' => true
-// 		),
-//   	),
-//   	"creator"=> array(
-//     	"email" => "email@example.com",
-//     	"displayName" => "Example",
-//     	"self"=> true
-//   	),
-// //   	"guestsCanInviteOthers" => false,
-// //   	"guestsCanModify" => false,
-// //   	"guestsCanSeeOtherGuests" => false,
-// ));
-
-// // //end
-
-// $createdEvent = $service->events->insert($calendarId, $event);
-
-
     }
 }

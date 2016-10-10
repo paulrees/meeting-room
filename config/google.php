@@ -10,7 +10,12 @@ return [
     | The Client ID can be found in the OAuth Credentials under Service Account
     |
     */
-    'client_id' => 'something.apps.googleusercontent.com',
+    'application_name' => 'Meeting Room',
+    
+    
+    
+    'client_id' => '103148900960293931085',
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -32,4 +37,7 @@ return [
     |
     */
     'key_file_location' => '/resources/assets/calendar.json',
+    
 ];
+
+?>

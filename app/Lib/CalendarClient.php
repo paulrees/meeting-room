@@ -1,25 +1,41 @@
 <?php
 namespace App\Lib;
 
-$credentialJson = './meeting-room-mettrr.json';
+// namespace Config;
+
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Config;
+
 
 class CalendarClient
 {
   
+  protected $client;
+  
+  protected $service; 
+  
+  protected $event;
+  
   public function __construct()
   {
-    $client = new Google_Client();
-    $client->setScopes(Google_Service_Calendar::CALENDAR);
-    $client->setAuthConfig($credentialJson);
+    $key = base_path() . '/calendar.json';
+    $this->client = new \Google_Client();
+    $this->client->setApplicationName('Meeting Room');
+    $this->client->setScopes(array('https://www.googleapis.com/auth/calendar'));
+    $this->client->setAuthConfig($key);
+  
+    $this->service = new \Google_Service_Calendar($this->client);
+    
+    $this->calendarId = "hello@mettrr.com";
   }
   
-  public function postData($date, $startTime, $endTime)
+  public function postData($title, $date, $startTime, $endTime, $priority, $email)
   {
-    $service = new Google_Service_Calendar($this->client);
     
-    $event = new Google_Service_Calendar_Event(array(
-  	'summary' => 'Test',
+    $event = new \Google_Service_Calendar_Event(array(
+  	'summary' => $title,
     	'location' => 'Mettrr, 5-8 Crown Works, Temple Street, E2 6QQ',
+    	'colorId' => $priority,
     	'start' => array(
       	'dateTime' => $date . 'T' . $startTime . ':00.000+01:00',
       	'timeZone' => 'Europe/London',
@@ -29,17 +45,13 @@ class CalendarClient
       	'timeZone' => 'Europe/London',
     	),
     	'attendees' => array(
-      		'email' => 'test@gmail.com',
-      		'organizer' => true
+      		array('email' => $email,'organizer' => true)
   		),
-    	"creator"=> array(
-      	"email" => "email@example.com",
-      	"displayName" => "Example",
-      	"self"=> true
-    	),
+  		'guestsCanSeeOtherGuests' => false,
   ));
   
-  $calendarId = "hello@mettrr.com";
-  $service->events->insert($calendarId, $event);
+  $id = $this->calendarId;
+  $result = $this->service->events->insert($id, $event);
+  
   }
 }
