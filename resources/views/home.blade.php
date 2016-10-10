@@ -36,24 +36,24 @@
             </div>
             </p>
             
-            <label for="Date" class="control-label">Date</label>
+            <label for="date" class="control-label">Date</label>
             <p>
             <div class="form-group">
-                <input class="field" name="date" type="date" class="form-control">
+                <input class="field" name="input_date" type="date" class="form-control">
             </div>
             </p>
             
             <label for="start-time" class="control-label">Start Time</label>
             <p>
             <div class="form-group">
-                <input class="field" name="start-time" type="time" value="00:00" class="form-control" step="1800">
+                <input class="field" name="start_time" type="time" value="00:00" class="form-control" step="1800">
             </div>
             </p>
             
             <label for="end-time" class="control-label">End Time</label>
             <p>
             <div class="form-group">
-                <input class="field" name="end-time" type="time" value="00:00" class="form-control" step="1800">
+                <input class="field" name="end_time" type="time" value="00:00" class="form-control" step="1800">
             </div>
             </p>
             

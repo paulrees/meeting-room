@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Lib\CalendarScript;
+use App\Lib\CalendarClient;
 use Carbon\Carbon;
-
-$cred = __DIR__ . '/meeting-room-mettrr.json';
 
 // $client = new Google_Client();
 // $client->setScopes(Google_Service_Calendar::CALENDAR);
@@ -33,17 +31,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $input = new CalendarScript("TESTER");
-        
         return view('home');
     }
     
     public function store(Request $request)
     {
+        $name = $request->name;
+        $date = $request->input_date;
+        $startTime = $request->start_time;
+        $endTime = $request->end_time;
         
-        dd($request->name);
+        
+        $client = new CalendarClient();
+        
+        $client.postData($date, $startTime, $endTime);
         
         return back();
+        
 //         $event = new Google_Service_Calendar_Event(array(
 // 	'summary' => 'ASDADADAD',
 //   	'location' => 'Mettrr, 5-8 Crown Works, Temple Street, E2 6QQ',
