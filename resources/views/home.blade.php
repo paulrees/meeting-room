@@ -17,8 +17,8 @@
         </ul>
 </div>
 <div class="container">
+    <div class="col-md-4">
     <h1>Mettrr</h1>
-
     <h4>Meeting Room Booking Form</h4>
         
         <h4></h4>
@@ -76,10 +76,15 @@
                 <button type="submit" class="btn btn-primary ">Add Meeting</button>
             </div>
         
-        </form>
-        
-        
-        
+         </form>
+         
+        @include('flash')
+            
+    </div>
+    
+    <div class="col-md-8">
+        @include('calendar')
+    </div>
         
         
         
