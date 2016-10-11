@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -25,6 +26,7 @@
         
         @yield('content')
     </div>
+    
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>

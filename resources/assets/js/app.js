@@ -1,11 +1,17 @@
 
 /**
  * First we will load all of this project's JavaScript dependencies which
- * include Vue and Vue Resource. This gives a great starting point for
+ * include Vue and Vues Resource. This gives a great starting point for
  * building robust, powerful web applications using Vue and Laravel.
  */
 
 require('./bootstrap');
+
+const moment = require('moment')
+
+// Vue.use(require('vue-moment'))
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16,5 +22,28 @@ require('./bootstrap');
 Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+      startTime:"08:00",
+      endTime: "",
+    },
+      methods: {
+        incrementStartTime: function() {
+          return this.startTime = moment(this.startTime, "HH:mm").add(30, "minutes").format("HH:mm");
+        },
+        decrementStartTime: function() {
+          return this.startTime = moment(this.startTime, "HH:mm").subtract(30, "minutes").format("HH:mm");
+        },
+        incrementEndTime: function() {
+          return this.endTime = moment(this.endTime, "HH:mm").add(30, "minutes").format("HH:mm");
+        },
+        decrementEndTime: function() {
+          return this.endTime = moment(this.endTime, "HH:mm").subtract(30, "minutes").format("HH:mm");
+        }
+      },
+      computed: {
+        returnEndTime: function() {
+          return this.endTime = moment(this.startTime, "HH:mm").add(30, "minutes").format("HH:mm");
+        }
+      }
 });
