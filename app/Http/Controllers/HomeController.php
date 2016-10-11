@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Lib\CalendarClient;
 use Illuminate\Http\Request;
+use App\Notifications\BookingConfirmed;
 
 class HomeController extends Controller
 {
@@ -36,6 +37,9 @@ class HomeController extends Controller
                         $request->start_time . ' to ' . $request->end_time . '.';
         
         flash($flashMessage);
+        
+        $user = returnUser();
+        $user->notify(new BookingConfirmed($request));
         
         return redirect('/home');
     }
