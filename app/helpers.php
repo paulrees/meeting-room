@@ -9,4 +9,9 @@ function getUserEmail()
 {
   return Auth::user()->email;
 }
+
+function returnUser()
+{
+  return Auth::user();
+}
 ?>
