@@ -43,8 +43,13 @@ class BookingConfirmed extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', 'https://laravel.com')
+                    ->subject('Your meeting room booking is confirmed.')
+                    ->success()
+                    ->line('You have succesfully booked the meeting room! Here are the details:')
+                    ->line('Date: ' . $this->booking->input_date)
+                    ->line('Start time: ' . $this->booking->start_time)
+                    ->line('End time: ' . $this->booking->end_time)
+                    ->action('View Calendar', 'https://laravel.com')
                     ->line('Thank you for using our application!');
     }
 
