@@ -5814,4 +5814,7 @@ html, body {
 .top-right-link {
   right: 20px; }
 
+.mouse-over {
+  cursor: pointer; }
+
 /*# sourceMappingURL=app.css.map */

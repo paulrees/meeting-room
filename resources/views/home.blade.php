@@ -17,7 +17,7 @@
         </ul>
 </div>
 <div class="container">
-    <div class="col-md-4">
+    <div class="col-md-3">
     <h1>Mettrr</h1>
     <h4>Meeting Room Booking Form</h4>
         
@@ -54,22 +54,24 @@
             <p>
             <div class="form-group">
                 <label for="start-time" class="control-label">Start Time</label>
-                <input class="field" name="start_time" type="time" value="00:00" class="form-control" step="1800">
+                <input v-model="startTime" @change="returnEndTime" class="field" name="start_time" type="time" min="08:00" max="18:00" class="form-control" step="1800" width="300">
+                <i class="fa fa-minus mouse-over" v-on:click="decrementStartTime" aria-hidden="true"></i>&nbsp;<i class="fa fa-plus mouse-over" v-on:click="incrementStartTime"  aria-hidden="true"></i>
             </div>
             </p>
             
             <p>
             <div class="form-group">
                 <label for="end-time" class="control-label">End Time &nbsp;</label>
-                <input class="field" name="end_time" type="time" value="00:00" class="form-control" step="1800">
+                <input v-model="endTime" input class="field" name="end_time" type="time" class="form-control" min="08:00" max="18:00" step="1800" width="30">
+                <i class="fa fa-minus mouse-over" v-on:click="decrementEndTime" aria-hidden="true"></i>&nbsp;<i class="fa fa-plus mouse-over" v-on:click="incrementEndTime" aria-hidden="true"></i>
             </div>
             </p>
             
             <div class="form-group">
                 <label for="priority" class="control-label">Priority&nbsp;</label>
-                <input class="field" name="priority" type="radio" value="11">&nbsp; 1 &nbsp;
-                <input class="field" name="priority" type="radio" value="5">&nbsp; 2 &nbsp;
-                <input class="field" name="priority" type="radio" value="10">&nbsp; 3 &nbsp;
+                <input class="field mouse-over" name="priority" type="radio" value="11">&nbsp; 1 &nbsp;
+                <input class="field mouse-over" name="priority" type="radio" value="5">&nbsp; 2 &nbsp;
+                <input class="field mouse-over" name="priority" type="radio" value="10">&nbsp; 3 &nbsp;
             </div>
             
             <div class="form-group">
@@ -77,18 +79,20 @@
             </div>
         
          </form>
+
          
         @include('flash')
-            
+        
     </div>
     
-    <div class="col-md-8">
+    <div class="col-md-9">
         @include('calendar')
     </div>
         
         
         
-        
                 
 </div>
+
+
 @endsection
