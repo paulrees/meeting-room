@@ -12,15 +12,16 @@ class BookingConfirmed extends Notification
     use Queueable;
 
     protected $booking;
+    protected $bookedDate;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($request)
+    public function __construct($booking, $bookedDate)
     {
-       $this->booking = $request;
-            
+       $this->booking = $booking;
+       $this->bookedDate = $bookedDate;
     }
 
     /**
@@ -46,7 +47,7 @@ class BookingConfirmed extends Notification
                     ->subject('Your meeting room booking is confirmed.')
                     ->success()
                     ->line('You have succesfully booked the meeting room! Here are the details:')
-                    ->line('Date: ' . $this->booking->input_date)
+                    ->line('Date: ' . $this->bookedDate)
                     ->line('Start time: ' . $this->booking->start_time)
                     ->line('End time: ' . $this->booking->end_time)
                     ->action('View Calendar', 'https://laravel.com')
