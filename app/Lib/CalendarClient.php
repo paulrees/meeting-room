@@ -21,7 +21,7 @@ class CalendarClient
     $this->calendarId = "hello@mettrr.com";
   }
   
-  public function postData($request, $user)
+  public function postData($request)
   {
     $user = returnUser();
     
