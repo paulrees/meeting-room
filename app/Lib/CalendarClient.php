@@ -1,30 +1,29 @@
 <?php
 namespace App\Lib;
 
-// use Illuminate\Support\Facades\Cache;
-// use Illuminate\Support\Facades\Config;
+use App\User;
 
 class CalendarClient
 {
-  
   protected $client;
-  protected $service; 
-  protected $event;
+  protected $services;
+  protected $credentialJson;
+  protected $calendarId;
   
   public function __construct()
   {
-    $key = base_path() . '/calendar.json';
+    $this->credentialJson = base_path() . '/calendar.json';
     $this->client = new \Google_Client();
     $this->client->setApplicationName('Meeting Room');
     $this->client->setScopes(array('https://www.googleapis.com/auth/calendar'));
-    $this->client->setAuthConfig($key);
-    $this->service = new \Google_Service_Calendar($this->client);
+    $this->client->setAuthConfig($this->credentialJson);
+    $this->service = new \Google_Service_Calendar($this->client);  
     $this->calendarId = "hello@mettrr.com";
   }
   
-  public function postData($request)
+  public function postData($request, $user)
   {
-    $email = getUserEmail();
+    $user = returnUser();
     
     $event = new \Google_Service_Calendar_Event(array(
   	'summary' => $request->title,
@@ -41,10 +40,11 @@ class CalendarClient
       	'timeZone' => 'Europe/London',
     	),
     	'attendees' => array(
-      		array('email' => $email,'organizer' => true)
+      		array('email' => $user->email,'organizer' => true)
   		),
   		'guestsCanSeeOtherGuests' => false,
   ));
+  
   
   $this->service->events->insert($this->calendarId, $event);
   

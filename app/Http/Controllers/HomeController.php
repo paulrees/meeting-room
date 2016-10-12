@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Carbon\Carbon;
 use App\Lib\CalendarClient;
 use Illuminate\Http\Request;
 use App\Notifications\BookingConfirmed;
@@ -28,18 +30,21 @@ class HomeController extends Controller
         return view('home');
     }
     
-    public function store(CalendarClient $calender, Request $request)
+    public function store(CalendarClient $calender, User $user, Request $request)
     {
-        $calender->postData($request);
+        $calender->postData($request, $user);
+        
+        $dateFormatted = formatDate($request->input_date);
+        // $startTime = formatTime($request->start_time);
+        
         
         $flashMessage = strtoupper($request->title) . ' is booked on ' . 
-                        $request->input_date . ' from ' . 
+                        $dateFormatted . ' from ' . 
                         $request->start_time . ' to ' . $request->end_time . '.';
         
         flash($flashMessage);
         
-        $user = returnUser();
-        $user->notify(new BookingConfirmed($request));
+        $user->notify(new BookingConfirmed($request, $dateFormatted));
         
         return redirect('/home');
     }
