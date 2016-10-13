@@ -5766,6 +5766,16 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+input[type=time]::-webkit-inner-spin-button,
+input[type=time]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
 html, body {
   background-color: #fff;
   color: #636b6f;
@@ -5773,6 +5783,15 @@ html, body {
   font-weight: 100;
   height: 100vh;
   margin: 0; }
+
+table {
+  margin: auto; }
+
+tr {
+  padding-bottom: 5px; }
+
+td {
+  padding: 5px 60px 5px 10px; }
 
 .full-height {
   height: 100vh; }
@@ -5816,5 +5835,27 @@ html, body {
 
 .mouse-over {
   cursor: pointer; }
+
+.responsive-iframe-container {
+  position: relative;
+  padding-bottom: 70.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden; }
+
+.responsive-iframe-container iframe,
+.vresponsive-iframe-container object,
+.vresponsive-iframe-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.responsive-twoweeks {
+  position: relative;
+  padding-bottom: 70.25%;
+  padding-top: 30px;
+  height: 0; }
 
 /*# sourceMappingURL=app.css.map */

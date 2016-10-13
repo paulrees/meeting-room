@@ -24,14 +24,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CalendarClient $calendar)
     {
-        return view('home');
+        $eventListing = $calendar->getData();
+        return view('home', compact('eventListing'));
     }
     
-    public function store(CalendarClient $calender, Request $request)
+    public function store(CalendarClient $calendar, Request $request)
     {
-        $calender->postData($request);
+        $calendar->postData($request);
         
         $dateFormatted = formatDate($request->input_date);
         
