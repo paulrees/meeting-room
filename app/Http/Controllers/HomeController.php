@@ -47,4 +47,14 @@ class HomeController extends Controller
         
         return redirect('/home');
     }
+    
+    public function destroy(CalendarClient $calendar, Request $request)
+    {
+        $calendar->deleteData($request->eventId);
+        
+        $flashMessage = strtoupper($request->title) . ' has been deleted. ';
+        flash($flashMessage);
+        
+        return redirect('/home');
+    }
 }

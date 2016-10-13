@@ -21,4 +21,6 @@ Route::get('/home', 'HomeController@index');
 
 Route::post('/post', 'HomeController@store');
 
+Route::delete('/delete', 'HomeController@destroy');
+
 

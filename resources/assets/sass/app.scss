@@ -41,6 +41,33 @@ td {
     padding: 5px 60px 5px 10px;
 }
 
+.smallpadding {
+    padding: 5px 10px 5px 10px;
+}
+
+.circle {
+
+   border-radius: 50%;
+   display: inline-block;
+   margin-right: 20px;
+   
+}
+
+._11 {
+    background-color: #e50000;
+    padding: 10px;
+}
+
+._5 {
+    background-color: #e5e500;
+    padding: 10px;
+}
+
+._10 {
+    background-color: #00e500;
+    padding: 10px;
+}
+
 .full-height {
     height: 100vh;
 }

@@ -24,7 +24,7 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: '#app',
     data: {
-      calendar: true,
+      calendar: false,
       startTime:"08:00",
       endTime: "",
     },

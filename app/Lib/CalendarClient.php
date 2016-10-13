@@ -62,4 +62,10 @@ class CalendarClient
     
     return $this->service->events->listEvents($this->calendarId, $optParams);
   }
+  
+  public function deleteData($eventId)
+  {
+    $this->service->events->delete($this->calendarId, $eventId);
+  }
+  
 }
