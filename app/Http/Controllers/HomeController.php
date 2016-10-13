@@ -29,9 +29,9 @@ class HomeController extends Controller
         return view('home');
     }
     
-    public function store(CalendarClient $calender, Request $request)
+    public function store(CalendarClient $calendar, Request $request)
     {
-        $calender->postData($request);
+        $calendar->postData($request);
         
         $dateFormatted = formatDate($request->input_date);
         
