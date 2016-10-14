@@ -24,9 +24,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CalendarClient $calendar)
     {
-        return view('home');
+        $eventListing = $calendar->getData();
+        return view('home', compact('eventListing'));
     }
     
     public function store(CalendarClient $calendar, Request $request)
@@ -43,6 +44,16 @@ class HomeController extends Controller
         
         $user = returnUser();
         $user->notify(new BookingConfirmed($request, $dateFormatted));
+        
+        return redirect('/home');
+    }
+    
+    public function destroy(CalendarClient $calendar, Request $request)
+    {
+        $calendar->deleteData($request->eventId);
+        
+        $flashMessage = strtoupper($request->title) . ' has been deleted. ';
+        flash($flashMessage);
         
         return redirect('/home');
     }

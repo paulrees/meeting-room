@@ -24,6 +24,7 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: '#app',
     data: {
+      calendar: false,
       startTime:"08:00",
       endTime: "",
     },
@@ -39,11 +40,17 @@ const app = new Vue({
         },
         decrementEndTime: function() {
           return this.endTime = moment(this.endTime, "HH:mm").subtract(30, "minutes").format("HH:mm");
+        },
+        toggle: function() {
+          return this.calendar = !this.calendar;
         }
       },
       computed: {
         returnEndTime: function() {
           return this.endTime = moment(this.startTime, "HH:mm").add(30, "minutes").format("HH:mm");
+        }, 
+        twoWeeks: function() {
+          return !this.calendar;
         }
-      }
+    }
 });

@@ -26,27 +26,46 @@ class CalendarClient
     $user = returnUser();
     
     $event = new \Google_Service_Calendar_Event(array(
-  	'summary' => $request->title,
-    	'location' => 'Mettrr, 5-8 Crown Works, Temple Street, E2 6QQ',
-    	'colorId' => $request->priority,
-    	'start' => array(
-      	'dateTime' => $request->input_date . 'T' . 
-      	              $request->start_time . ':00.000+01:00',
-      	'timeZone' => 'Europe/London',
-    	),
-    	'end' => array(
-      	'dateTime' => $request->input_date . 'T' . 
-      	              $request->end_time . ':00.000+01:00',
-      	'timeZone' => 'Europe/London',
-    	),
-    	'attendees' => array(
-      		array('email' => $user->email,'organizer' => true)
-  		),
-  		'guestsCanSeeOtherGuests' => false,
-  ));
-  
-  
+    	'summary' =>  ucfirst(strtolower($request->title)),
+      	'location' => 'Mettrr, 5-8 Crown Works, Temple Street, E2 6QQ',
+      	'colorId' => $request->priority,
+      	'start' => array(
+        	'dateTime' => $request->input_date . 'T' . 
+        	              $request->start_time . ':00.000+01:00',
+        	'timeZone' => 'Europe/London',
+      	),
+      	'end' => array(
+        	'dateTime' => $request->input_date . 'T' . 
+        	              $request->end_time . ':00.000+01:00',
+        	'timeZone' => 'Europe/London',
+      	),
+      	'attendees' => array(
+        		array('email' => $user->email,'organizer' => true)
+    		),
+    		'guestsCanSeeOtherGuests' => false,
+    ));
   $this->service->events->insert($this->calendarId, $event);
-  
   }
+  
+  public function getData()
+  {
+    $startDate = new \DateTime(null, new \DateTimeZone('Europe/London'));
+    $endDate = new \DateTime(null, new \DateTimeZone('Europe/London'));
+    $endDate->add(new \DateInterval('P14D'));
+    
+    $optParams = array(
+      'orderBy' => 'startTime',
+      'singleEvents' => TRUE,
+      'timeMin' => $startDate->format('c'),
+      'timeMax' => $endDate->format('c')
+    );
+    
+    return $this->service->events->listEvents($this->calendarId, $optParams);
+  }
+  
+  public function deleteData($eventId)
+  {
+    $this->service->events->delete($this->calendarId, $eventId);
+  }
+  
 }

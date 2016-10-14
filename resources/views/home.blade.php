@@ -54,7 +54,7 @@
             <p>
             <div class="form-group">
                 <label for="start-time" class="control-label">Start Time</label>
-                <input v-model="startTime" @change="returnEndTime" class="field" name="start_time" type="time" min="08:00" max="18:00" class="form-control" step="1800" width="300">
+                <input v-model="startTime" @change="returnEndTime" class="field" name="start_time" type="time" min="08:00" max="18:00" class="form-control" step="1800" required="required">
                 <i class="fa fa-minus mouse-over" v-on:click="decrementStartTime" aria-hidden="true"></i>&nbsp;<i class="fa fa-plus mouse-over" v-on:click="incrementStartTime"  aria-hidden="true"></i>
             </div>
             </p>
@@ -62,7 +62,7 @@
             <p>
             <div class="form-group">
                 <label for="end-time" class="control-label">End Time &nbsp;</label>
-                <input v-model="endTime" input class="field" name="end_time" type="time" class="form-control" min="08:00" max="18:00" step="1800" width="30">
+                <input v-model="endTime" input class="field" name="end_time" type="time" class="form-control" min="08:00" max="18:00" step="1800" required="required">
                 <i class="fa fa-minus mouse-over" v-on:click="decrementEndTime" aria-hidden="true"></i>&nbsp;<i class="fa fa-plus mouse-over" v-on:click="incrementEndTime" aria-hidden="true"></i>
             </div>
             </p>
@@ -84,9 +84,23 @@
         @include('flash')
         
     </div>
-    
     <div class="col-md-9">
-        @include('calendar')
+        
+        <div class="form-group">
+            <button class="btn btn-primary" v-on:click="toggle">
+                <span v-if="calendar">View 2 Weeks</span>
+                <span v-else>View Calendar</span>
+            </button>
+                <h3 v-if="calendar">Calendar View</h3>
+                <h3 v-else>2 Week View</h3>
+        </div>
+        <div v-show="twoWeeks" class="responsive-twoweeks">
+            @include('twoweeks')
+        </div>
+        <div v-show="calendar" class="responsive-iframe-container">
+            @include('calendar')
+        </div>
+        
     </div>
         
         
