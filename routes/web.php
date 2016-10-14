@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index');
 Route::post('/post', 'HomeController@store');
 
 
+
+
