@@ -29,27 +29,27 @@ const app = new Vue({
       endTime: "",
     },
       methods: {
-        incrementStartTime: function() {
+        incrementStartTime() {
           return this.startTime = moment(this.startTime, "HH:mm").add(30, "minutes").format("HH:mm");
         },
-        decrementStartTime: function() {
+        decrementStartTime() {
           return this.startTime = moment(this.startTime, "HH:mm").subtract(30, "minutes").format("HH:mm");
         },
-        incrementEndTime: function() {
+        incrementEndTime() {
           return this.endTime = moment(this.endTime, "HH:mm").add(30, "minutes").format("HH:mm");
         },
-        decrementEndTime: function() {
+        decrementEndTime() {
           return this.endTime = moment(this.endTime, "HH:mm").subtract(30, "minutes").format("HH:mm");
         },
-        toggle: function() {
+        toggle() {
           return this.calendar = !this.calendar;
         }
       },
       computed: {
-        returnEndTime: function() {
+        returnEndTime() {
           return this.endTime = moment(this.startTime, "HH:mm").add(30, "minutes").format("HH:mm");
         }, 
-        twoWeeks: function() {
+        twoWeeks() {
           return !this.calendar;
         }
     }
