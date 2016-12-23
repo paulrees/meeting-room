@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Event;
 use App\Lib\CalendarClient;
 use Illuminate\Http\Request;
 use App\Notifications\BookingConfirmed;
@@ -32,7 +33,16 @@ class HomeController extends Controller
     
     public function store(CalendarClient $calendar, Request $request)
     {
-        $calendar->postData($request);
+        $completed = $calendar->postData($request);
+        dd($request);
+        
+        $dbEvent = new Event();
+        $dbEvent->title = $request->title;
+        $dbEvent->location = 'Mettrr, 5-8 Crown Works, Temple Street, E2 6QQ';
+        $dbEvent->host = returnUser()->name;
+        $dbEvent->calendar_id = "pr@mettrr.com";
+        $dbEvent->save();
+        
         
         $dateFormatted = formatDate($request->input_date);
         
