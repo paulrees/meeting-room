@@ -68,10 +68,10 @@
             </p>
             
             <div class="form-group">
-                <label for="priority" class="control-label">Priority&nbsp;</label>
-                <input class="field mouse-over" name="priority" type="radio" value="11">&nbsp; 1 &nbsp;
-                <input class="field mouse-over" name="priority" type="radio" value="5">&nbsp; 2 &nbsp;
-                <input class="field mouse-over" name="priority" type="radio" value="10">&nbsp; 3 &nbsp;
+                <label for="priority" class="control-label">Priority&nbsp;</label><br>
+                <input class="field mouse-over" name="priority" type="radio" value="11">&nbsp; High &nbsp; <br>
+                <input class="field mouse-over" name="priority" type="radio" value="5">&nbsp; Normal &nbsp; <br>
+                <input class="field mouse-over" name="priority" type="radio" value="10">&nbsp; Low &nbsp; <br>
             </div>
             
             <div class="form-group">

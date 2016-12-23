@@ -34,7 +34,7 @@ class HomeController extends Controller
     public function store(CalendarClient $calendar, Request $request)
     {
         $completed = $calendar->postData($request);
-        dd($completed);
+        // dd($completed);
 
         $dbEvent = new Event();
         $dbEvent->title = $request->title;
