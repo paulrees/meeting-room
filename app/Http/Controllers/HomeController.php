@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\User;
 use App\Lib\CalendarClient;
 use Illuminate\Http\Request;
 use App\Notifications\BookingConfirmed;
@@ -27,7 +28,8 @@ class HomeController extends Controller
     public function index(CalendarClient $calendar)
     {
         $eventListing = $calendar->getData();
-        return view('home', compact('eventListing'));
+        $users = User::all();
+        return view('home', compact('eventListing', 'users'));
     }
     
     public function store(CalendarClient $calendar, Request $request)

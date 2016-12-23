@@ -44,6 +44,18 @@
             </div>
             </p>
             
+            <label for="host" class="control-label">Host</label>
+            
+            <p>
+            <div class="form-group">
+                <select name="host">
+                    @foreach ($users as $user)
+                        <option value="{{ $user->name }}">{{ $user->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            </p>
+            
             <label for="date" class="control-label">Date</label>
             <p>
             <div class="form-group">
@@ -79,7 +91,6 @@
             </div>
         
          </form>
-
          
         @include('flash')
         
