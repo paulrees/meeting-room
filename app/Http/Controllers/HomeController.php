@@ -27,34 +27,19 @@ class HomeController extends Controller
      */
     public function index(CalendarClient $calendar)
     {
+       
         $eventListing = $calendar->getData();
         return view('home', compact('eventListing'));
     }
     
     public function store(CalendarClient $calendar, Request $request)
     {
-        $completed = $calendar->postData($request);
-        // dd($completed);
-
+        $googleResponse = $calendar->postData($request);
+       
         $dbEvent = new Event();
-        $dbEvent->title = $request->title;
-        $dbEvent->location = 'Mettrr, 5-8 Crown Works, Temple Street, E2 6QQ';
-        $dbEvent->host = returnUser()->name;
-        $dbEvent->calendar_id = "pr@mettrr.com";
-        $dbEvent->save();
+        $dbEvent->addEvent($request);
         
-        
-        $dateFormatted = formatDate($request->input_date);
-        
-        $flashMessage = strtoupper($request->title) . ' is booked on ' . 
-                        $dateFormatted . ' from ' . 
-                        $request->start_time . ' to ' . $request->end_time . '.';
-        
-        flash($flashMessage);
-        
-        $user = returnUser();
-        $user->notify(new BookingConfirmed($request, $dateFormatted));
-        
+      
         return redirect('/home');
     }
     

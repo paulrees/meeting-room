@@ -28,7 +28,7 @@
             {{ csrf_field() }}
             
             
-            <label for="name" class="control-label">Name</label>
+            <label for="name" class="control-label">Host Name</label>
             
             <p>
             <div class="form-group">

@@ -50,10 +50,9 @@ class CalendarClient
     $event->setColorId($request->priority);
     $event->setLocation('Mettrr, 5-8 Crown Works, Temple Street, E2 6QQ');
     $start = new \Google_Service_Calendar_EventDateTime();
-    $start->setDateTime("2016-12-24T09:00:00Z");
-    $event->setStart($start);
+    $start->setDateTime($request->input_date . 'T' . $request->start_time . ':00.000+00:00');    $event->setStart($start);
     $end = new \Google_Service_Calendar_EventDateTime();
-    $end->setDateTime("2016-12-24T09:30:00Z");
+    $end->setDateTime($request->input_date . 'T' . $request->end_time . ':00.000+00:00');
     $event->setEnd($end);
     $attendee = new \Google_Service_Calendar_EventAttendee();
     $attendee->setEmail($user->email);
