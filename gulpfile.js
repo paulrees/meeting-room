@@ -19,5 +19,5 @@ elixir(mix => {
        .scripts([
            'fullcalendar.js',
            'fullcalendar/fullcalendar.min.js'
-           ]);
+           ], 'public/js/all.js');
 });

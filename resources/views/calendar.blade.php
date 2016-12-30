@@ -1,5 +1,6 @@
+
 <div id='calendar'></div>
-<!--<script src="{{ url('./resources/assets/js/components/fullcalendar.js') }}/fullcalendar.min.js"></script>-->
+
 <script type="text/javascript">
  $(document).ready(function() {
   
