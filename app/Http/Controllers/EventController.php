@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Event;
 use App\Http\Requests;
 
 class EventController extends Controller
@@ -20,7 +21,8 @@ class EventController extends Controller
     
     public function store(Request $request)
     {
-      $time = explode(" - ", $request->input('time'));
+        
+     $time = explode(" - ", $request->input('time'));
       
      $event = new Event;
      $event->name = $request->input('name');

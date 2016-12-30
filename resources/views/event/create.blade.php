@@ -60,20 +60,19 @@
 @endsection
 
 @section('js')
+<link rel="stylesheet" href="/assets/daterangepicker/daterangepicker.css" type="text/css" />
 
-<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/assets/daterangepicker/daterangepicker.js"></script>
 <script type="text/javascript">
-
 $(function () {
 	$('input[name="time"]').daterangepicker({
 		"minDate": moment('<?php echo date('Y-m-d G')?>'),
 		"timePicker": true,
 		"timePicker24Hour": true,
-		"timePickerIncrement": 15,
+		"timePickerIncrement": 30,
 		"autoApply": true,
 		"locale": {
-			"format": "DD/MM/YYYY HH:mm:ss",
+			"format": "YYYY-MM-DD HH:mm:ss",
 			"separator": " - ",
 		}
 	});

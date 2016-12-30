@@ -14,9 +14,7 @@
     <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/fullcalendar/fullcalendar.min.css" type="text/css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
     <!-- Scripts -->
@@ -37,6 +35,8 @@
     <script src="/assets/fullcalendar/lib/moment.min.js"></script>
     <script src="/js/app.js"></script>
     <script src="/assets/fullcalendar/fullcalendar.min.js"></script>
+    
+    @yield('js')
 
 </body>
 </html>
