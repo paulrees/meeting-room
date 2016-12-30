@@ -25,6 +25,7 @@ Route::delete('/delete', 'HomeController@destroy');
 
 Route::resource('events', 'EventController');
 
+
 Route::get('/api', function () {
 	$events = DB::table('events')->select('id', 'name', 'title', 'start_time as start', 'end_time as end')->get();
 	foreach($events as $event)

@@ -7,6 +7,10 @@
      var base_url = '{{ url('/') }}';
      
      $('#calendar').fullCalendar({
+     googleCalendarApiKey: '48722d41aa16c22e850e766e69e2884265d0d3a6',
+        events: {
+            googleCalendarId: 'hello@mettrr.com'
+        },
      weekends: true,
      header: {
      left: 'prev,next today',

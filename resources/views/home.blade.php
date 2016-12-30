@@ -2,6 +2,30 @@
 
 @section('content')
 
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name') }}</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{{ url('events') }}">Events List</a></li>
+			<li><a href="{{ url('events/create') }}">Add new event</a></li>
+			<li><a href="#">Hi : {{ Auth::user()->name }}</a></li>
+			<li><a href="{{ url('/logout') }}"
+                onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">Logout</li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<br>
 <div class="container">
         <ul class="nav navbar-nav navbar-right">
             Logged in as : <b>{{ Auth::user()->name }}</b> &nbsp;&nbsp;
@@ -93,7 +117,7 @@
                 <span v-else>View Calendar</span>
             </button>
                 <h3 v-if="calendar">Calendar View</h3>
-                <h3 v-else>2 Week View</h3>
+                <h3 v-else>2 Weeks View</h3>
         </div>
         <div v-show="twoWeeks" class="responsive-twoweeks">
             @include('twoweeks')

@@ -28,7 +28,7 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: '#app',
     data: {
-      calendar: false,
+      calendar: true,
       startTime:"08:00",
       endTime: "",
     },
@@ -56,5 +56,7 @@ const app = new Vue({
         twoWeeks() {
           return !this.calendar;
         }
-    }
+    },
+    
+    
 });
