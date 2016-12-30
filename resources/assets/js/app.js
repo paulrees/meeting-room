@@ -9,6 +9,10 @@ require('./bootstrap');
 
 const moment = require('moment')
 
+global.jQuery = require('jquery');
+var $ = global.jQuery;
+window.$ = $;
+
 // Vue.use(require('vue-moment'))
 
 

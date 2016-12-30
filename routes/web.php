@@ -23,6 +23,8 @@ Route::post('/post', 'HomeController@store');
 
 Route::delete('/delete', 'HomeController@destroy');
 
+Route::resource('events', 'EventController');
+
 
 
 
