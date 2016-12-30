@@ -34,12 +34,12 @@ class HomeController extends Controller
     
     public function store(CalendarClient $calendar, Request $request)
     {
-        $googleResponse = $calendar->postData($request);
+        // $googleResponse = $calendar->postData($request);
        
-        $dbEvent = new Event();
-        $dbEvent->addEvent($request);
+        // $dbEvent = new Event();
+        // $dbEvent->addEvent($request);
         
-      
+        // return view('event/create, $request');
         return redirect('/home');
     }
     

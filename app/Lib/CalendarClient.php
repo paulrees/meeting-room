@@ -50,7 +50,8 @@ class CalendarClient
     $event->setColorId($request->priority);
     $event->setLocation('Mettrr, 5-8 Crown Works, Temple Street, E2 6QQ');
     $start = new \Google_Service_Calendar_EventDateTime();
-    $start->setDateTime($request->input_date . 'T' . $request->start_time . ':00.000+00:00');    $event->setStart($start);
+    $start->setDateTime($request->input_date . 'T' . $request->start_time . ':00.000+00:00');    
+    $event->setStart($start);
     $end = new \Google_Service_Calendar_EventDateTime();
     $end->setDateTime($request->input_date . 'T' . $request->end_time . ':00.000+00:00');
     $event->setEnd($end);

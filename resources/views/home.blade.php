@@ -47,7 +47,8 @@
         
         <h4></h4>
         
-        <form method="POST" action="/post"> 
+        <form method="POST" action="{{ url('events') }}">
+            <!--action="/post">-->
         
             {{ csrf_field() }}
             

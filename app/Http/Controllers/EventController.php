@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Event;
 use App\Http\Requests;
+use App\Lib\CalendarClient;
 
 class EventController extends Controller
 {
@@ -19,16 +20,22 @@ class EventController extends Controller
       return view('event/create');
     }
     
-    public function store(Request $request)
+    public function store(CalendarClient $calendar, Request $request)
     {
+     $googleResponse = $calendar->postData($request);
         
      $time = explode(" - ", $request->input('time'));
-      
+    
      $event = new Event;
      $event->name = $request->input('name');
      $event->title = $request->input('title');
-     $event->start_time = $time[0];
-     $event->end_time = $time[1];
+      if ($time[0] == "") {
+        $event->start_time = $request->input_date . ' ' . $request->start_time . ':00';
+        $event->end_time = $request->input_date . ' ' . $request->end_time . ':00';
+      } else {
+        $event->start_time = $time[0];
+        $event->end_time = $time[1];
+      }
      $event->save();
       
      $request->session()->flash('success', 'The event was successfully saved!');
