@@ -22,8 +22,6 @@ class EventController extends Controller
     
     public function store(CalendarClient $calendar, Request $request)
     {
-     $googleResponse = $calendar->postData($request);
-        
      $time = explode(" - ", $request->input('time'));
     
      $event = new Event;
@@ -36,7 +34,10 @@ class EventController extends Controller
         $event->start_time = $time[0];
         $event->end_time = $time[1];
       }
+     $googleResponse = $calendar->postData($request);
      $event->save();
+     
+
       
      $request->session()->flash('success', 'The event was successfully saved!');
      return redirect('events/create');

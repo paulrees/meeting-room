@@ -15,7 +15,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{ url('events') }}">Events List</a></li>
+            <li><a href="{{ url('events') }}">2-Week View</a></li>
 			<li><a href="{{ url('events/create') }}">Add new event</a></li>
 			<li><a href="#">Hi : {{ Auth::user()->name }}</a></li>
 			<li><a href="{{ url('/logout') }}"
@@ -112,18 +112,8 @@
     </div>
     <div class="col-md-9">
         
-        <div class="form-group">
-            <button class="btn btn-primary" v-on:click="toggle">
-                <span v-if="calendar">View 2 Weeks</span>
-                <span v-else>View Calendar</span>
-            </button>
-                <h3 v-if="calendar">Calendar View</h3>
-                <h3 v-else>2 Weeks View</h3>
-        </div>
-        <div v-show="twoWeeks" class="responsive-twoweeks">
-            @include('twoweeks')
-        </div>
-        <div v-show="calendar" class="responsive-iframe-container">
+        
+        <div id="calendar" class="responsive-iframe-container">
             @include('calendar')
         </div>
         

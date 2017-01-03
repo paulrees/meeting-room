@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <div class="row">
-	<div clss="col-lg-12">
+	<div class="col-md-6 col-md-offset-3">
 		<ol class="breadcrumb">
 			<li>You are here: <a href="{{ url('/') }}">Home</a></li>
 			<li><a href="{{ url('/events') }}">Events</a></li>
@@ -16,7 +15,7 @@
 @include('message')
 
 <div class="row">
-	<div class="col-lg-6">
+	<div class="col-md-6 col-md-offset-3">
 		
 		<form action="{{ url('events') }}" method="POST">
 			{{ csrf_field() }}
