@@ -34,13 +34,13 @@ class EventController extends Controller
         $event->start_time = $time[0];
         $event->end_time = $time[1];
       }
-     $googleResponse = $calendar->postData($request);
-     $event->save();
      
+     $event->save();
+    //  $googleResponse = $calendar->postData($request);
 
       
      $request->session()->flash('success', 'The event was successfully saved!');
-     return redirect('events/create');
+     return redirect('home');
     }
     
     public function show($id)
