@@ -15,11 +15,12 @@
             @if (Request::path() != 'events')
               <li><a href="{{ url('events') }}">2-Week View</a></li>
             @endif
-			<li><a href="#">Hi : {{ Auth::user()->name }}</a></li>
-			<li><a href="{{ url('/logout') }}"
+        			<li><a href="#">Hi : {{ Auth::user()->name }}</a></li>
+        			<li><a href="{{ url('/logout') }}"
                 onclick="event.preventDefault();
-                         document.getElementById('logout-form').submit();">Logout</li>
+                         document.getElementById('logout-form').submit();">Logout</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
-    </div>
+        </div>
+        <!--/.nav-collapse -->
+      </div>
 </nav>

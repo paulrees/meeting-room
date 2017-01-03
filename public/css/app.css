@@ -7866,4 +7866,13 @@ body {
   margin: 0 auto;
 }
 
+#clash {
+  background-color: #EA7171;
+  color: white;
+  border-width: 1px;
+  border-color: black;
+  text-align: center;
+  font-size: 20px;
+}
+
 /*# sourceMappingURL=app.css.map */
