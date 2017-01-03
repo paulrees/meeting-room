@@ -12,8 +12,8 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-             @if(Request::path() != "{{ url('events') }}"
-            <li><a href="{{ url('events') }}">2-Week View</a></li>
+            @if (Request::path() != 'events')
+              <li><a href="{{ url('events') }}">2-Week View</a></li>
             @endif
 			<li><a href="#">Hi : {{ Auth::user()->name }}</a></li>
 			<li><a href="{{ url('/logout') }}"

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @include('navbar')
 @section('content')
+<br>
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 		@if($events->count() > 0)

@@ -30,7 +30,7 @@ const app = new Vue({
     data: {
       calendar: true,
       startTime:"08:00",
-      endTime: "",
+      endTime: ""
     },
       methods: {
         incrementStartTime() {

@@ -27,14 +27,8 @@ class EventController extends Controller
      $event = new Event;
      $event->name = $request->input('name');
      $event->title = $request->input('title');
-      if ($time[0] == "") {
-        $event->start_time = $request->input_date . ' ' . $request->start_time . ':00';
-        $event->end_time = $request->input_date . ' ' . $request->end_time . ':00';
-      } else {
-        $event->start_time = $time[0];
-        $event->end_time = $time[1];
-      }
-     
+     $event->start_time = $time[0];
+     $event->end_time = $time[1];
      $event->save();
     //  $googleResponse = $calendar->postData($request);
 
