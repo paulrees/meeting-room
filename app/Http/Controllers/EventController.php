@@ -22,6 +22,15 @@ class EventController extends Controller
     
     public function store(CalendarClient $calendar, Request $request)
     {
+     
+     $this -> validate(request(), [
+     
+     'name' => 'required',
+     'title' => 'required',
+     'time' => 'required'
+     
+     ]);
+     
      $time = explode(" - ", $request->input('time'));
     
      $event = new Event;

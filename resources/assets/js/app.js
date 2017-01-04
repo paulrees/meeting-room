@@ -1,3 +1,23 @@
+function Errors() {
+      this.errors = {};
+
+    this.get = function(field) {
+      if (this.errors[field]) {
+      return this.errors[field][0];
+      };
+    };
+    
+    this.record = function(errors) {
+       this.errors = errors;
+    };
+};
+    
+    
+
+
+
+
+
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -9,9 +29,9 @@ require('./bootstrap');
 
 const moment = require('moment')
 
-global.jQuery = require('jquery');
-var $ = global.jQuery;
-window.$ = $;
+// global.jQuery = require('jquery');
+// var $ = global.jQuery;
+// window.$ = $;
 
 // Vue.use(require('vue-moment'))
 
@@ -33,26 +53,16 @@ const app = new Vue({
       endTime: "",
       name: "",
       title: "",
-      time: ""
+      time: "",
+      clash: "",
+      errors: new Errors(),
     },
       methods: {
-        incrementStartTime() {
-          return this.startTime = moment(this.startTime, "HH:mm").add(30, "minutes").format("HH:mm");
-        },
-        decrementStartTime() {
-          return this.startTime = moment(this.startTime, "HH:mm").subtract(30, "minutes").format("HH:mm");
-        },
-        incrementEndTime() {
-          return this.endTime = moment(this.endTime, "HH:mm").add(30, "minutes").format("HH:mm");
-        },
-        decrementEndTime() {
-          return this.endTime = moment(this.endTime, "HH:mm").subtract(30, "minutes").format("HH:mm");
-        },
-        toggle() {
-          return this.calendar = !this.calendar;
-        },
+        
         onSubmit() {
-          axios.post('/events', this.$data);
+          axios.post('/events', this.$data)
+          
+                .catch(error => this.errors.record(error.response.data));
         }
       },
       computed: {
@@ -71,12 +81,19 @@ const app = new Vue({
           var array = $('#calendar').fullCalendar('clientEvents');
           for(i in array){
             if(picker.endDate._d >= array[i].start && picker.startDate._d <= array[i].end){
-              return $('#clash').text('This booking clashes with an existing meeting hosted by ' + array[i].name);
+              
+              function error(message) { 
+                this.clash = [message]
+              };
+              var theErrorObject = new error("This booking clashes with an existing meeting hosted by " + array[i].name);
+              app.errors.record(theErrorObject);
+              
+              // return $('#clash').text('This booking clashes with an existing meeting hosted by ' + array[i].name);
             } else {
-            $('#clash').text('');
+            // $('#clash').text('');
             }
-        }
-});
+          }
+      });
         
       }
     
