@@ -52,8 +52,6 @@ const app = new Vue({
           return this.calendar = !this.calendar;
         },
         onSubmit() {
-          console.log(this.name);
-          console.log(this.time);
           axios.post('/events', this.$data);
         }
       },
@@ -68,14 +66,8 @@ const app = new Vue({
       mounted () {
         $('input[name="time"]').on('hide.daterangepicker', function(ev, picker) {
           
-          this.time = picker.startDate._d;
-          console.log(this.name);
-          console.log(this.time);
+          app.time = moment(picker.startDate._d).format('Y-MM-DD HH:mm:ss') + " - " + moment(picker.endDate._d).format('Y-MM-DD HH:mm:ss');
           
-          
-  
-  
-  
           var array = $('#calendar').fullCalendar('clientEvents');
           for(i in array){
             if(picker.endDate._d >= array[i].start && picker.startDate._d <= array[i].end){
@@ -83,7 +75,7 @@ const app = new Vue({
             } else {
             $('#clash').text('');
             }
-          }
+        }
 });
         
       }
@@ -93,7 +85,7 @@ const app = new Vue({
 
 $(function () {
 	$('input[name="time"]').daterangepicker({
-		"minDate": moment("<?php echo date('Y-m-d G')?>"),
+		"minDate": moment().startOf('hour').format('Y-MM-DD HH:mm:ss'),
 		"timePicker": true,
 		"timePicker24Hour": true,
 		"timePickerIncrement": 30,
@@ -104,5 +96,4 @@ $(function () {
 		}
 	});
 });
-
 
