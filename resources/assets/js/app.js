@@ -30,7 +30,10 @@ const app = new Vue({
     data: {
       calendar: true,
       startTime:"08:00",
-      endTime: ""
+      endTime: "",
+      name: "",
+      title: "",
+      time: ""
     },
       methods: {
         incrementStartTime() {
@@ -47,6 +50,11 @@ const app = new Vue({
         },
         toggle() {
           return this.calendar = !this.calendar;
+        },
+        onSubmit() {
+          console.log(this.name);
+          console.log(this.time);
+          axios.post('/events', this.$data);
         }
       },
       computed: {
@@ -56,7 +64,45 @@ const app = new Vue({
         twoWeeks() {
           return !this.calendar;
         }
-    },
+      },
+      mounted () {
+        $('input[name="time"]').on('hide.daterangepicker', function(ev, picker) {
+          
+          this.time = picker.startDate._d;
+          console.log(this.name);
+          console.log(this.time);
+          
+          
+  
+  
+  
+          var array = $('#calendar').fullCalendar('clientEvents');
+          for(i in array){
+            if(picker.endDate._d >= array[i].start && picker.startDate._d <= array[i].end){
+              return $('#clash').text('This booking clashes with an existing meeting hosted by ' + array[i].name);
+            } else {
+            $('#clash').text('');
+            }
+          }
+});
+        
+      }
     
     
 });
+
+$(function () {
+	$('input[name="time"]').daterangepicker({
+		"minDate": moment("<?php echo date('Y-m-d G')?>"),
+		"timePicker": true,
+		"timePicker24Hour": true,
+		"timePickerIncrement": 30,
+		"autoApply": true,
+		"locale": {
+			"format": "YYYY-MM-DD HH:mm:ss",
+			"separator": " - ",
+		}
+	});
+});
+
+
