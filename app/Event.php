@@ -12,22 +12,46 @@ class Event extends Model
     
      public function addEvent($request)
     {
-        $this->title = $request->title;
-        $this->start_time = $request->input_date . ' ' . $request->start_time . ':00';
-        $this->end_time = $request->input_date . ' ' . $request->end_time . ':00';
-        $this->name = returnUser()->name;
-        $this->save();
+        
+        $time = explode(" - ", $request->input('time'));
+    
+        
+         $this->name = $request->input('name');
+         $this->title = $request->input('title');
+         $this->start_time = $time[0];
+         $this->end_time = $time[1];
+        
+        //  $googleResponse = $calendar->postData($request);
 
-        $dateFormatted = formatDate($request->input_date);
+      
+        $request->session()->flash('success', 'The event was successfully saved!');
         
-        $flashMessage = strtoupper($request->title) . ' is booked on ' . 
-                        $dateFormatted . ' from ' . 
-                        $request->start_time . ' to ' . $request->end_time . '.';
+        // $this->title = $request->title;
+        // $this->start_time = $request->input_date . ' ' . $request->start_time . ':00';
+        // $this->end_time = $request->input_date . ' ' . $request->end_time . ':00';
+        // $this->name = returnUser()->name;
+        // $this->save();
+
+        // $dateFormatted = formatDate($request->input_date);
         
-        flash($flashMessage);
+        // $flashMessage = strtoupper($request->title) . ' is booked on ' . 
+        //                 $dateFormatted . ' from ' . 
+        //                 $request->start_time . ' to ' . $request->end_time . '.';
         
-        $user = returnUser();
-        $user->notify(new BookingConfirmed($request, $dateFormatted));
+        // flash($flashMessage);
         
+        // $user = returnUser();
+        // $user->notify(new BookingConfirmed($request, $dateFormatted));
+        
+    }
+    
+    public function updateEvent($request) {
+        
+     $time = explode(" - ", $request->input('time'));
+       
+     $this->name = $request->input('name');
+     $this->title = $request->input('title');
+     $this->start_time = $time[0];
+     $this->end_time = $time[1];
     }
 }

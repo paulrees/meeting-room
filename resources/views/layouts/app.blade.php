@@ -41,6 +41,7 @@
     <script src="/js/all.js"></script>
     <script src="/js/app.js"></script>
     <script src="/assets/fullcalendar/fullcalendar.min.js"></script>
+    <script type='text/javascript' src='/assets/fullcalendar/gcal.js'></script>
     <script type="text/javascript" src="/assets/daterangepicker/daterangepicker.js"></script>
 
     

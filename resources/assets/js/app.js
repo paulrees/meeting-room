@@ -66,6 +66,18 @@ const app = new Vue({
   }
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
 var setDateAndTime = function(picker) {
   app.time = moment(picker.startDate._d).format('Y-MM-DD HH:mm:ss') + " - " + moment(picker.endDate._d).format('Y-MM-DD HH:mm:ss');
 

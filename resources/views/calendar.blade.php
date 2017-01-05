@@ -15,12 +15,22 @@
       },
       editable: false,
       eventLimit: true, // allow "more" link when too many events
-      events: {
-        url: base_url + '/api',
-        error: function() {
-          alert("cannot load json");
+      googleCalendarApiKey: 'AIzaSyC_wDp-mp-ubm2szTGUaFJCESk1R7WEZLo',
+      eventSources: [
+        {
+           googleCalendarId: 'hello@mettrr.com',
+           color: 'green',
+           textColor: 'white'
+        },
+        {
+           url: base_url + '/api',
+           error: function() {
+           alert("cannot load json");
         }
-      }
+        }
+      ]
+        
+      
     });
   });
 </script>
