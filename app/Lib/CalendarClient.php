@@ -25,26 +25,48 @@ class CalendarClient
   {
     $user = returnUser();
     
-    $event = new \Google_Service_Calendar_Event(array(
-    	'summary' =>  ucfirst(strtolower($request->title)),
-      	'location' => 'Mettrr, 5-8 Crown Works, Temple Street, E2 6QQ',
-      	'colorId' => $request->priority,
-      	'start' => array(
-        	'dateTime' => $request->input_date . 'T' . 
-        	              $request->start_time . ':00.000+01:00',
-        	'timeZone' => 'Europe/London',
-      	),
-      	'end' => array(
-        	'dateTime' => $request->input_date . 'T' . 
-        	              $request->end_time . ':00.000+01:00',
-        	'timeZone' => 'Europe/London',
-      	),
-      	'attendees' => array(
-        		array('email' => $user->email,'organizer' => true)
-    		),
-    		'guestsCanSeeOtherGuests' => false,
-    ));
-  $this->service->events->insert($this->calendarId, $event);
+    // $event = new \Google_Service_Calendar_Event(array(
+    // 	  'summary' =>  ucfirst(strtolower($request->title)),
+    //   	'location' => 'Mettrr, 5-8 Crown Works, Temple Street, E2 6QQ',
+    //   	'colorId' => $request->priority,
+    //   	'start' => array(
+    //     	'dateTime' => $request->input_date . 'T' . 
+    //     	              $request->start_time . ':00.000+01:00',
+    //     	'timeZone' => 'Europe/London',
+    //   	),
+    //   	'end' => array(
+    //     	'dateTime' => $request->input_date . 'T' . 
+    //     	              $request->end_time . ':00.000+01:00',
+    //     	'timeZone' => 'Europe/London',
+    //   	),
+    //   	'attendees' => array(
+    //     		array('email' => $user->email,'organizer' => true)
+    // 		),
+    // 		'guestsCanSeeOtherGuests' => false,
+    // ));
+    
+    $event = new \Google_Service_Calendar_Event();
+    $event->setSummary($request->title);
+    $event->setColorId($request->priority);
+    $event->setLocation('Mettrr, 5-8 Crown Works, Temple Street, E2 6QQ');
+    $start = new \Google_Service_Calendar_EventDateTime();
+    $start->setDateTime($request->input_date . 'T' . $request->start_time . ':00.000+00:00');    
+    $event->setStart($start);
+    $end = new \Google_Service_Calendar_EventDateTime();
+    $end->setDateTime($request->input_date . 'T' . $request->end_time . ':00.000+00:00');
+    $event->setEnd($end);
+    $attendee = new \Google_Service_Calendar_EventAttendee();
+    $attendee->setEmail($user->email);
+    $attendees = array($attendee);
+    $event->setAttendees($attendees);
+    $organizer = new \Google_Service_Calendar_EventOrganizer();
+    $organizer->setEmail($user->email);
+    $organizer->setDisplayName($user->name);
+    $event->setOrganizer($organizer);
+    
+    
+    
+    return $this->service->events->insert($this->calendarId, $event);
   }
   
   public function getData()

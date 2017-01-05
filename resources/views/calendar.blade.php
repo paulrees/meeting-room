@@ -1,1 +1,26 @@
-<iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;height=700&amp;wkst=2&amp;bgcolor=%23ffffff&amp;src=hello%40mettrr.com&amp;color=%23182C57&amp;ctz=Europe%2FLondon" style="border-width:0" width="850" height="650" frameborder="0" scrolling="no"></iframe>
+
+<div id='calendar'></div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  
+    var base_url = '{{ url('/') }}';
+    
+    $('#calendar').fullCalendar({
+      weekends: true,
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+      },
+      editable: false,
+      eventLimit: true, // allow "more" link when too many events
+      events: {
+        url: base_url + '/api',
+        error: function() {
+          alert("cannot load json");
+        }
+      }
+    });
+  });
+</script>
