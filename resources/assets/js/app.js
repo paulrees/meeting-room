@@ -1,9 +1,13 @@
 function Errors() {
       this.errors = {};
+      this.customErrors = {};
 
     this.get = function(field) {
       if (this.errors[field]) {
         return this.errors[field][0];
+      };
+      if (this.customErrors[field]) {
+        return this.customErrors[field][0];
       };
     };
     
@@ -13,10 +17,11 @@ function Errors() {
     
     this.clear = function(field) {
       delete this.errors[field];
+      delete this.customErrors[field];
     }
     
-    this.add = function(error) {
-      this.errors[error.field] = [error.message];
+    this.addCustomError = function(error) {
+      this.customErrors[error.field] = [error.message];
     }
 };
     
@@ -101,7 +106,7 @@ $('input[name="time"]').on('hide.daterangepicker', function(ev, picker) {
         this.field = field;
       };
       var clashError = new CustomError("This booking clashes with an existing meeting hosted by " + array[i].name, 'clash');
-      app.errors.add(clashError);
+      app.errors.addCustomError(clashError);
     } else {
       app.errors.clear('clash');
     }
