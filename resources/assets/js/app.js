@@ -3,13 +3,21 @@ function Errors() {
 
     this.get = function(field) {
       if (this.errors[field]) {
-      return this.errors[field][0];
+        return this.errors[field][0];
       };
     };
     
     this.record = function(errors) {
        this.errors = errors;
     };
+    
+    this.clear = function(field) {
+      delete this.errors[field];
+    }
+    
+    this.add = function(error) {
+      this.errors[error.field] = [error.message];
+    }
 };
     
     
@@ -74,26 +82,30 @@ const app = new Vue({
         }
       },
       mounted () {
-        $('input[name="time"]').on('hide.daterangepicker', function(ev, picker) {
-          
-          app.time = moment(picker.startDate._d).format('Y-MM-DD HH:mm:ss') + " - " + moment(picker.endDate._d).format('Y-MM-DD HH:mm:ss');
-          
-          var array = $('#calendar').fullCalendar('clientEvents');
-          for(i in array){
-            if(picker.endDate._d >= array[i].start && picker.startDate._d <= array[i].end){
-              
-              function Error(message, location) { 
-                this.location = [message]
-              };
-              var theErrorObject = new Error("This booking clashes with an existing meeting hosted by " + array[i].name, clash);
-              app.errors.record(theErrorObject);
-                          } 
-          }
-      });
+        
         
       }
     
     
+});
+
+$('input[name="time"]').on('hide.daterangepicker', function(ev, picker) {
+          
+  app.time = moment(picker.startDate._d).format('Y-MM-DD HH:mm:ss') + " - " + moment(picker.endDate._d).format('Y-MM-DD HH:mm:ss');
+  
+  var array = $('#calendar').fullCalendar('clientEvents');
+  for(i in array){
+    if(picker.endDate._d >= array[i].start && picker.startDate._d <= array[i].end){
+      function CustomError(message, field) { 
+        this.message = message;
+        this.field = field;
+      };
+      var clashError = new CustomError("This booking clashes with an existing meeting hosted by " + array[i].name, 'clash');
+      app.errors.add(clashError);
+    } else {
+      app.errors.clear('clash');
+    }
+  }
 });
 
 $(function () {
