@@ -57,6 +57,14 @@ class EventController extends Controller
     
     public function update(Request $request, $id)
     {
+     
+     $this -> validate(request(), [
+     
+     'name' => 'required',
+     'title' => 'required',
+     
+     ]);
+     
      $time = explode(" - ", $request->input('time'));
       
      $event = Event::findOrFail($id);
@@ -66,7 +74,7 @@ class EventController extends Controller
      $event->end_time = $time[1];
      $event->save();
       
-     return redirect('events');
+     // return redirect('home');
     }
     
     public function destroy($id)
