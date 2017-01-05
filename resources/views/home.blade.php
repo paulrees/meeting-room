@@ -26,11 +26,11 @@
         	
         	<div class="control">
         		<label for="time">Date & Time</label>
-        		<input class="form-control" type="text" name="time" v-model="time"/>
+        		<input class="form-control" type="text" name="time" v-model="time" required/>
         	</div>
         	
         	<div class="control">
-        		<button class="btn btn-primary">Create</button>
+        		<button class="btn btn-primary" :disabled='errors.any()'>Create</button>
         	</div>
         </form>
         	<span class="bg-danger" v-text="errors.get('clash')"></span>

@@ -37,6 +37,7 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/assets/fullcalendar/lib/moment.min.js"></script>
+    <script src="/js/all.js"></script>
     <script src="/js/app.js"></script>
     <script src="/assets/fullcalendar/fullcalendar.min.js"></script>
     

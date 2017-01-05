@@ -16,4 +16,9 @@ require('laravel-elixir-vue-2');
 elixir(mix => {
     mix.sass('app.scss')
        .webpack('app.js')
+       .scripts([
+        'errors.js',
+        'dateRangePickerConfig.js'
+        ], 'public/js/all.js')
 });
+

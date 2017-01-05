@@ -27,7 +27,6 @@ class EventController extends Controller
      
      'name' => 'required',
      'title' => 'required',
-     'time' => 'required'
      
      ]);
      
