@@ -82,16 +82,12 @@ const app = new Vue({
           for(i in array){
             if(picker.endDate._d >= array[i].start && picker.startDate._d <= array[i].end){
               
-              function error(message) { 
-                this.clash = [message]
+              function Error(message, location) { 
+                this.location = [message]
               };
-              var theErrorObject = new error("This booking clashes with an existing meeting hosted by " + array[i].name);
+              var theErrorObject = new Error("This booking clashes with an existing meeting hosted by " + array[i].name, clash);
               app.errors.record(theErrorObject);
-              
-              // return $('#clash').text('This booking clashes with an existing meeting hosted by ' + array[i].name);
-            } else {
-            // $('#clash').text('');
-            }
+                          } 
           }
       });
         
