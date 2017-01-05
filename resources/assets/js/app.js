@@ -23,6 +23,10 @@ function Errors() {
     this.addCustomError = function(error) {
       this.customErrors[error.field] = [error.message];
     }
+    
+    this.has = function(field) {
+      return this.errors.hasOwnProperty(field);
+    }
 };
     
     

@@ -15,19 +15,18 @@
         	<div class="control">
         		<label for="name">Your Name</label>
         		<input class="form-control" placeholder="Your full name" type="text" name="name" v-model="name"/>
-        		<span class="bg-danger" v-text="errors.get('name')"></span>
+        		<span class="bg-danger" v-if="errors.has('name')" v-text="errors.get('name')"></span>
         	</div>
         	
         	<div class="control">
         		<label for="title">Meeting Title</label>
         		<input class="form-control" placeholder="e.g. CEO update" type="text" name="title" v-model="title"/>
-        		<span class="bg-danger" v-text="errors.get('title')"></span>
+        		<span class="bg-danger" v-if="errors.has('title')" v-text="errors.get('title')"></span>
         	</div>
         	
         	<div class="control">
         		<label for="time">Date & Time</label>
         		<input class="form-control" type="text" name="time" v-model="time"/>
-        		<span class="bg-danger" v-text="errors.get('time')"></span>
         	</div>
         	
         	<div class="control">
