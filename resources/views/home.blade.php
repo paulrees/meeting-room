@@ -56,8 +56,6 @@
 </div>
 
 @section('js')
-<link rel="stylesheet" href="/assets/daterangepicker/daterangepicker.css" type="text/css" />
-<script type="text/javascript" src="/assets/daterangepicker/daterangepicker.js"></script>
 
 
 @endsection

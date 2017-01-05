@@ -20,8 +20,8 @@ function Errors() {
       delete this.customErrors[field];
     }
     
-    this.addCustomError = function(error) {
-      this.customErrors[error.field] = [error.message];
+    this.addCustomError = function(field, message) {
+      this.customErrors[field] = [message];
     }
     
     this.has = function(field) {

@@ -17,42 +17,64 @@ const moment = require('moment')
 Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
-    el: '#app',
-    data: {
-      calendar: true,
-      startTime:"08:00",
-      endTime: "",
-      name: "",
-      title: "",
-      time: "",
-      clash: "",
-      errors: new Errors(),
+  el: '#app',
+  data: {
+    calendar: true,
+    startTime: "08:00",
+    endTime: "",
+    name: "",
+    title: "",
+    time: "",
+    clash: "",
+    errors: new Errors(),
+  },
+  methods: {
+
+    onSubmit() {
+      axios.post('/events', this.$data)
+
+      .then(this.onSuccess)
+
+      .catch(error => this.errors.record(error.response.data))
     },
-      methods: {
-        
-        onSubmit() {
-          axios.post('/events', this.$data)
-          
-                .then(this.onSuccess)
-          
-                .catch(error => this.errors.record(error.response.data))
-        },
-        onSuccess(response) {
-          this.name = "";
-          this.title = "";
-          $('#calendar').fullCalendar('refetchEvents');
-        }
-      },
-      computed: {
-        returnEndTime() {
-          return this.endTime = moment(this.startTime, "HH:mm").add(30, "minutes").format("HH:mm");
-        }, 
-        twoWeeks() {
-          return !this.calendar;
-        }
-      },
-      mounted () {
-      }
+    onSuccess(response) {
+      this.name = "";
+      this.title = "";
+      $('#calendar').fullCalendar('refetchEvents');
+    }
+  },
+  computed: {
+    returnEndTime() {
+      return this.endTime = moment(this.startTime, "HH:mm").add(30, "minutes").format("HH:mm");
+    },
+    twoWeeks() {
+      return !this.calendar;
+    }
+  },
+  mounted() {
+    $('input[name="time"]').on('hide.daterangepicker', function(ev, picker) {
+      setDateAndTime(picker);
+      var eventsArray = $('#calendar').fullCalendar('clientEvents');
+      checkForClash(eventsArray, picker);
+    });
+  }
 });
+
+var setDateAndTime = function(picker) {
+  app.time = moment(picker.startDate._d).format('Y-MM-DD HH:mm:ss') + " - " + moment(picker.endDate._d).format('Y-MM-DD HH:mm:ss');
+
+}
+
+var checkForClash = function(eventsArray, picker) {
+  for (i in eventsArray) {
+    if (picker.endDate._d >= eventsArray[i].start && picker.startDate._d <= eventsArray[i].end) {
+      var clashMessage = "This booking clashes with an existing meeting hosted by " + eventsArray[i].name;
+      app.errors.addCustomError('clash', clashMessage);
+    }
+    else {
+      app.errors.clear('clash');
+    }
+  }
+}
 
 
