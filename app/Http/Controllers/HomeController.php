@@ -7,6 +7,7 @@ use App\Event;
 use App\Lib\CalendarClient;
 use Illuminate\Http\Request;
 use App\Notifications\BookingConfirmed;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -45,5 +46,17 @@ class HomeController extends Controller
         flash($flashMessage);
         
         return redirect('/home');
+    }
+    
+    public function sendEmail() {
+        Mail::send('mail', ['title' => 'a title', 'content' => 'some content'], function ($message)
+        {
+
+            $message->from('me@gmail.com', 'some guy');
+
+            $message->to('paulalexrees@gmail.com');
+
+        });
+        return redirect('home');
     }
 }

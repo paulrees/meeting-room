@@ -36,6 +36,8 @@ Route::get('/api', function () {
 	return $events;
 });
 
+Route::get('/sendemail', 'HomeController@sendEmail');
+
 
 
 
