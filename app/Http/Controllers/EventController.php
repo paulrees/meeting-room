@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 use App\Event;
 use App\Http\Requests;
 use App\Lib\CalendarClient;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
     public function index()
     {
-      return view('event/list', ['events' => Event::orderBy('start_time')->get()]);
+      $twoWeeksAway = Carbon::now()->addWeeks(2)->toDateTimeString();
+      return view('event/list', ['events' => Event::where('start_time', '<', $twoWeeksAway)->get()]);
     }
     
     public function create()
