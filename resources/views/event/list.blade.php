@@ -38,7 +38,7 @@
 			</tbody>
 		</table>
 		@else
-			<h2>No event yet!</h2>
+			<h2>No upcoming events</h2>
 		@endif
 	</div>
 </div>

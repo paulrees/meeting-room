@@ -8,7 +8,7 @@
 <div class="container">
     <div class="col-md-3">
     <h1>Mettrr</h1>
-    <h4>Meeting Room Booking Form</h4>
+    <h4><small>Meeting Room Booking Form</small></h4>
         
         <form method="POST" @submit.prevent="onSubmit('{{ url('events') }}')" @keydown="errors.clear($event.target.name)">
         	{{ csrf_field() }}
@@ -53,10 +53,5 @@
         
                 
 </div>
-
-@section('js')
-
-
-@endsection
 
 @endsection
