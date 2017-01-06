@@ -2,6 +2,14 @@
 @include('navbar')
 @section('content')
 <br>
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<h1>2-Week Meeting Schedule:</h1>
+		<hr>
+	</div>
+</div>
+
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 		@if($events->count() > 0)
@@ -9,7 +17,8 @@
 			<thead>
 				<tr>
 					<th>#</th>
-					<th>Event Title</th>
+					<th>Meeting</th>
+					<th>Booked by</th>
 					<th>Start</th>
 					<th>End</th>
 					<th></th>
@@ -21,8 +30,9 @@
 				<tr>
 					<th scope="row">{{ $i++ }}</th>
 					<td><a href="{{ url('events/' . $event->id) }}">{{ $event->title }}</a></td>
+					<td>{{ $event->name }}</td>
 					<td>{{ date("g:ia\, jS M Y", strtotime($event->start_time)) }}</td>
-					<td>{{date("g:ia\, jS M Y", strtotime($event->end_time)) }}</td>
+					<td>{{ date("g:ia\, jS M Y", strtotime($event->end_time)) }}</td>
 					<td>
 						<a class="btn btn-primary btn-xs" href="{{ url('events/' . $event->id . '/edit')}}">
 							<span class="glyphicon glyphicon-edit"></span> Edit</a> 
@@ -38,7 +48,7 @@
 			</tbody>
 		</table>
 		@else
-			<h2>No event yet!</h2>
+			<h2>No upcoming events</h2>
 		@endif
 	</div>
 </div>

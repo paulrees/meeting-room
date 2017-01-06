@@ -122,6 +122,8 @@ td {
     position: relative;
     padding-bottom: 70.25%;
     padding-top: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
     height: 0;
     overflow: hidden;
 }
@@ -149,7 +151,7 @@ html {
 }
 
 body {
-  padding-top: 80px;
+  padding-top: 0px;
   padding-bottom: 20px;
   margin-bottom: 150px;
 }
@@ -173,6 +175,8 @@ body {
 @media (min-width: 768px) {
   .container {
     max-width: 960px;
+    padding-right: 0px;
+    padding-left: 0px;
   }
 }
 .container-narrow > hr {
@@ -326,4 +330,9 @@ body {
 @keyframes sk-circleFadeDelay {
   0%, 39%, 100% { opacity: 0; }
   40% { opacity: 1; } 
+}
+
+.control {
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
