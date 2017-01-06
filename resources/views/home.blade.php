@@ -43,7 +43,6 @@
     </div>
     <div class="col-md-9">
         
-        
         <div id="calendar" class="responsive-iframe-container">
             @include('calendar')
         </div>
