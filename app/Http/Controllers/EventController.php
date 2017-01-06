@@ -20,28 +20,17 @@ class EventController extends Controller
       return view('event/create');
     }
     
-    public function store(CalendarClient $calendar, Request $request)
+    public function store(Request $request)
     {
      
      $this -> validate(request(), [
-     
      'name' => 'required',
      'title' => 'required',
-     
      ]);
      
-     $time = explode(" - ", $request->input('time'));
-    
      $event = new Event;
-     $event->name = $request->input('name');
-     $event->title = $request->input('title');
-     $event->start_time = $time[0];
-     $event->end_time = $time[1];
+     $event->addEvent($request);
      $event->save();
-    //  $googleResponse = $calendar->postData($request);
-
-      
-     $request->session()->flash('success', 'The event was successfully saved!');
      return redirect('home');
     }
     
@@ -57,16 +46,16 @@ class EventController extends Controller
     
     public function update(Request $request, $id)
     {
-     $time = explode(" - ", $request->input('time'));
+     
+     $this -> validate(request(), [
+     'name' => 'required',
+     'title' => 'required',
+     ]);
       
      $event = Event::findOrFail($id);
-     $event->name = $request->input('name');
-     $event->title = $request->input('title');
-     $event->start_time = $time[0];
-     $event->end_time = $time[1];
+     $event->updateEvent($request);
      $event->save();
       
-     return redirect('events');
     }
     
     public function destroy($id)

@@ -10,7 +10,7 @@
     <h1>Mettrr</h1>
     <h4>Meeting Room Booking Form</h4>
         
-        <form method="POST" action="{{ url('events') }}" @submit.prevent="onSubmit" @keydown="errors.clear($event.target.name)">
+        <form method="POST" @submit.prevent="onSubmit('{{ url('events') }}')" @keydown="errors.clear($event.target.name)">
         	{{ csrf_field() }}
         	<div class="control">
         		<label for="name">Your Name</label>
@@ -42,7 +42,6 @@
         
     </div>
     <div class="col-md-9">
-        
         
         <div id="calendar" class="responsive-iframe-container">
             @include('calendar')

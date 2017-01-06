@@ -30,17 +30,23 @@ const app = new Vue({
   },
   methods: {
 
-    onSubmit() {
-      axios.post('/events', this.$data)
-
+    onSubmit(uri) {
+      axios.post(uri, this.$data)
       .then(this.onSuccess)
-
       .catch(error => this.errors.record(error.response.data))
     },
     onSuccess(response) {
       this.name = "";
       this.title = "";
       $('#calendar').fullCalendar('refetchEvents');
+    },
+    onEdit(uri) {
+      axios.put(uri, this.$data)
+      .then(this.onEditSuccess)
+      .catch(error => this.errors.record(error.response.data))
+    },
+    onEditSuccess() {
+      window.location.href="/home";
     }
   },
   computed: {
@@ -59,6 +65,18 @@ const app = new Vue({
     });
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 var setDateAndTime = function(picker) {
   app.time = moment(picker.startDate._d).format('Y-MM-DD HH:mm:ss') + " - " + moment(picker.endDate._d).format('Y-MM-DD HH:mm:ss');
